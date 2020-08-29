@@ -21,7 +21,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('id', 'nickname', 'userProfile', 'created_on', 'img')
+        fields = ('id', 'nickName', 'userProfile', 'created_on', 'img')
         extra_kwargs = {'userProfile': {'read_only': True}}
 
 
@@ -30,14 +30,14 @@ class PostSerializer(serializers.ModelSerializer):
     created_on = serializers.DateTimeField(format='%Y-%m-%d', read_only=True)
 
     class Meta:
-        model = Profile
-        fields = ('id', 'nickname', 'userPost', 'created_on', 'img', 'liked')
+        model = Post
+        fields = ('id', 'title', 'userPost', 'created_on', 'img', 'liked')
         extra_kwargs = {'userPost': {'read_only': True}}
 
 
 class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Profile
-        fields = ('id', 'nickname', 'userComment', 'post')
+        model = Comment
+        fields = ('id', 'text', 'userComment', 'post')
         extra_kwargs = {'userComment': {'read_only': True}}
